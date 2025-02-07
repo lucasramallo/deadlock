@@ -25,10 +25,11 @@ public class Main {
         // P1 solicita [1, 1]
         p1.setAlocado(new int[]{1, 1});
         recursosDisponiveis = new int[]{1, 1};
-        processos.remove(p1);
+        ArrayList<Processo> processosCopy = (ArrayList<Processo>) processos.clone();
+        processosCopy.remove(p1);
         //
 
-        boolean isSafe = banqueiro.isSafe(processos, recursosDisponiveis);
+        boolean isSafe = banqueiro.isSafe(processosCopy, recursosDisponiveis);
         System.out.println(isSafe ? "Recursos podem ser alocados" : "Recursos não podem ser alocados pois geram deadlock");
     }
 }
